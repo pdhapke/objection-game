@@ -1,0 +1,44 @@
+.buttonbar {
+  background-color: #b37700;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+
+a {
+  color: #ffffff;
+
+&:hover {
+   background-color: #ffaa00;
+   color: white;
+   text-decoration: underline;
+ }
+}
+
+> a {
+  align-items: center;
+  padding: 15px 10px;
+  text-decoration: none;
+  display: flex;
+}
+
+@media (max-width: 575px) {
+  .responsive-text {
+    font-size: 1.5em;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+@media (min-width: 576px) {
+  .responsive-text {
+    font-size: 1em;
+  }
+}
+}
+
+.link-span {
+  text-align: center;
+  width: 100%;
+}

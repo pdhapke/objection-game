@@ -1,0 +1,27 @@
+<div class='buttonbar row' id='buttonbar' onload="onpageload()">
+  <a class="col-sm-1 col-6 responsive-text" [ngSwitch]="true">
+    <span *ngSwitchCase="true" id='signoutlink'
+          class="signoutlink link-span"
+          onclick="signOut();">Sign out</span>
+    <span *ngSwitchDefault id='signinlink'
+          class='signinlink link-span'
+          onclick="signIn();">Sign In</span>
+  </a>
+  <a id='game' class='game col-sm-2 col-12 order-1 responsive-text' onclick="launchGame()" routerLink="/game"><span
+    class="link-span">Objection Game</span></a>
+  <a id='home' class='home col-sm-1 col-6 responsive-text' routerLink="/home">
+    <span class="link-span">Home</span>
+  </a>
+  <a id='ObjectionReference'
+     class='objection-reference col-sm-3 col-12 order-2 responsive-text'
+     routerLink="/reference"><span class="link-span">Objection Rules and Reference</span></a>
+  <a id='basics' class='basics col-sm-2 col-12 order-3 responsive-text' routerLink="/basics">
+    <span class="link-span">Mock Trial Basics</span></a>
+  <a id='Guide' class='guide col-sm-1 col-4 order-4 responsive-text' routerLink="/guide">
+    <span class="link-span">Guide</span></a>
+  <a id='links' class='links col-sm-1 col-4 order-5 responsive-text' routerLink="/links">
+    <span class="link-span">Links</span></a>
+  <a id='about' class='about col-sm-1 col-4 order-6 responsive-text' routerLink="/about">
+    <span class="link-span">About</span>
+  </a>
+</div>
