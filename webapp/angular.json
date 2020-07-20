@@ -109,18 +109,6 @@
               "**/node_modules/**"
             ]
           }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ObjectionGame:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "ObjectionGame:serve:production"
-            }
-          }
         }
       }
     }
@@ -133,5 +121,8 @@
         "prefix": ""
       }
     }
+  },
+  "cli": {
+    "analytics": "aced4a8a-bbd5-431e-ae77-9c7001fcd6b6"
   }
 }

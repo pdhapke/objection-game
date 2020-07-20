@@ -1,0 +1,61 @@
+version: '3.5'
+services:
+  objection-app-api:
+    container_name: objection-app-api
+    build:
+      context: ${buildContext}
+      dockerfile: ApiDockerfile
+    image: objection-game-server:latest
+    restart: unless-stopped
+    ports:
+      - ${apiPort}:${apiPort}
+    expose:
+      - ${apiPort}
+    depends_on:
+      - objection-app-db
+  objection-app-web:
+    container_name: objection-app-web
+    build:
+      context: ${buildContext}
+      dockerfile: AppDockerfile
+    image: objection-game-app:latest
+    restart: "no"
+    ports:
+      - ${appPort}:8080
+    expose:
+      - ${appPort}
+    depends_on:
+      - objection-app-api
+    networks:
+      - backend
+    volumes:
+      - ./webapp/nginx/configs:/etc/nginx/templates
+    environment:
+      NGINX_ENVSUBST_TEMPLATE_DIR: /etc/nginx/templates
+      apiPort: ${apiPort}
+  objection-app-db:
+    container_name: objection-app-db
+    image: mysql:5.7
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${databaseName}
+      MYSQL_USER: ${userName}
+      MYSQL_PASSWORD: ${UserPassword}
+      MYSQL_ROOT_PASSWORD: ${UserRootPassword}
+      MYSQL_ROOT_HOST: ${RootHost}
+    ports:
+      - ${sqlPort}:3306
+    expose:
+      - ${sqlPort}
+    volumes:
+      - ./sql:/data/application/sql
+      - ./sql/my-db:/var/lib/mysql
+    command: --init-file /data/application/sql/init.sql
+    networks:
+      - database
+volumes:
+  my-db:
+  init:
+networks:
+  backend:
+  database:

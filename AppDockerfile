@@ -1,0 +1,14 @@
+FROM node:alpine AS builder
+
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app/
+
+COPY .env /usr/src/.env
+COPY ./webapp /usr/src/app/
+
+RUN npm run initialize
+
+FROM nginx
+# COPY webapp/server.conf /etc/nginx/conf.d/server.conf
+# copy artifact build from the 'build environment'
+COPY --from=builder /usr/src/app/dist /usr/share/nginx/html

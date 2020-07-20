@@ -1,5 +1,5 @@
 {
-  "name": "objection-game",
+  "name": "objection-game-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -9,8 +9,7 @@
     "initialize": "ng build --prod --output-path=dist",
     "dev": "ng serve --port 4200",
     "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
